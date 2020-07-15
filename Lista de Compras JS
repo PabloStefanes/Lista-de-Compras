@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+</head>
+
+<body>
+    <input type="text" name="produto" id="produto" class="produto">
+    <button id="btn" class="btn">Cadastrar Produto</button>
+
+    <ul>
+        <li>Arroz</li>
+        <li>Feijão</li>
+        <li>Macarrão</li>
+    </ul>
+    <script>
+        const $lista = document.querySelector('ul')
+        const $produto = document.querySelector('#produto')
+        const $botao = document.querySelector('#btn')
+
+        $botao.addEventListener('click', adcProduto)
+
+        function adcProduto() {
+            const $item = `<li>${$produto.value}</li>`
+            $lista.innerHTML += $item
+            $produto.value = ''
+            $produto.focus()
+        }
+
+        $produto.addEventListener('keydown', apertaEnter => {
+            if (apertaEnter.keyCode === 13) {
+                adcProduto()
+            }
+        })
+    </script>
+</body>
+
+</html>
